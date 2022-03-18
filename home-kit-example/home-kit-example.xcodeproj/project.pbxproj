@@ -13,12 +13,12 @@
 		F3CE6F0427E4994C00245B27 /* home_kit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F0327E4994C00245B27 /* home_kit_exampleTests.swift */; };
 		F3CE6F0E27E4994C00245B27 /* home_kit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F0D27E4994C00245B27 /* home_kit_exampleUITests.swift */; };
 		F3CE6F1027E4994C00245B27 /* home_kit_exampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F0F27E4994C00245B27 /* home_kit_exampleUITestsLaunchTests.swift */; };
-		F3CE6F1D27E499FE00245B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3CE6F1C27E499FE00245B27 /* Assets.xcassets */; };
 		F3CE6F2027E49B1E00245B27 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F1F27E49B1E00245B27 /* BaseCollectionViewController.swift */; };
 		F3CE6F2227E49C0800245B27 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F2127E49C0800245B27 /* HomeViewController.swift */; };
 		F3CE6F2427E49D7C00245B27 /* AccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F2327E49D7C00245B27 /* AccessoryViewController.swift */; };
 		F3CE6F2627E49EAD00245B27 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F2527E49EAD00245B27 /* HomeCell.swift */; };
 		F3CE6F2827E49F0800245B27 /* AccessoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F2727E49F0800245B27 /* AccessoryCell.swift */; };
+		F3CE6F2A27E4CBAD00245B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3CE6F2927E4CBAD00245B27 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,13 +49,13 @@
 		F3CE6F0927E4994C00245B27 /* home-kit-exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "home-kit-exampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CE6F0D27E4994C00245B27 /* home_kit_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home_kit_exampleUITests.swift; sourceTree = "<group>"; };
 		F3CE6F0F27E4994C00245B27 /* home_kit_exampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home_kit_exampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F3CE6F1C27E499FE00245B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../Downloads/HomeKit/starter/LightSwitch/LightSwitch/Assets.xcassets; sourceTree = "<group>"; };
 		F3CE6F1E27E49A1400245B27 /* LightSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LightSwitch.entitlements; sourceTree = "<group>"; };
 		F3CE6F1F27E49B1E00245B27 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		F3CE6F2127E49C0800245B27 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3CE6F2327E49D7C00245B27 /* AccessoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViewController.swift; sourceTree = "<group>"; };
 		F3CE6F2527E49EAD00245B27 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		F3CE6F2727E49F0800245B27 /* AccessoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCell.swift; sourceTree = "<group>"; };
+		F3CE6F2927E4CBAD00245B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				F3CE6F2527E49EAD00245B27 /* HomeCell.swift */,
 				F3CE6F2727E49F0800245B27 /* AccessoryCell.swift */,
 				F3CE6EF227E4994A00245B27 /* Main.storyboard */,
-				F3CE6F1C27E499FE00245B27 /* Assets.xcassets */,
+				F3CE6F2927E4CBAD00245B27 /* Assets.xcassets */,
 				F3CE6EF727E4994C00245B27 /* LaunchScreen.storyboard */,
 				F3CE6EFA27E4994C00245B27 /* Info.plist */,
 			);
@@ -243,7 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3CE6EF927E4994C00245B27 /* LaunchScreen.storyboard in Resources */,
-				F3CE6F1D27E499FE00245B27 /* Assets.xcassets in Resources */,
+				F3CE6F2A27E4CBAD00245B27 /* Assets.xcassets in Resources */,
 				F3CE6EF427E4994A00245B27 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
