@@ -16,6 +16,7 @@
 		F3CE6F0E27E4994C00245B27 /* home_kit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F0D27E4994C00245B27 /* home_kit_exampleUITests.swift */; };
 		F3CE6F1027E4994C00245B27 /* home_kit_exampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F0F27E4994C00245B27 /* home_kit_exampleUITestsLaunchTests.swift */; };
 		F3CE6F1D27E499FE00245B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3CE6F1C27E499FE00245B27 /* Assets.xcassets */; };
+		F3CE6F2027E49B1E00245B27 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE6F1F27E49B1E00245B27 /* BaseCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		F3CE6F0F27E4994C00245B27 /* home_kit_exampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home_kit_exampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F3CE6F1C27E499FE00245B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../Downloads/HomeKit/starter/LightSwitch/LightSwitch/Assets.xcassets; sourceTree = "<group>"; };
 		F3CE6F1E27E49A1400245B27 /* LightSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LightSwitch.entitlements; sourceTree = "<group>"; };
+		F3CE6F1F27E49B1E00245B27 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				F3CE6F1E27E49A1400245B27 /* LightSwitch.entitlements */,
 				F3CE6EEC27E4994A00245B27 /* AppDelegate.swift */,
+				F3CE6F1F27E49B1E00245B27 /* BaseCollectionViewController.swift */,
 				F3CE6EEE27E4994A00245B27 /* SceneDelegate.swift */,
 				F3CE6EF027E4994A00245B27 /* ViewController.swift */,
 				F3CE6EF227E4994A00245B27 /* Main.storyboard */,
@@ -263,6 +266,7 @@
 				F3CE6EF127E4994A00245B27 /* ViewController.swift in Sources */,
 				F3CE6EED27E4994A00245B27 /* AppDelegate.swift in Sources */,
 				F3CE6EEF27E4994A00245B27 /* SceneDelegate.swift in Sources */,
+				F3CE6F2027E49B1E00245B27 /* BaseCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
