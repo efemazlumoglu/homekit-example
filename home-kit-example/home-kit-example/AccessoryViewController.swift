@@ -14,6 +14,9 @@ class AccessoryViewController: BaseCollectionViewController {
     var accessories: [HMAccessory] = []
     var home: HMHome?
     
+    let browser = HMAccessoryBrowser()
+    var discoveredAccessories: [HMAccessory] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,27 +40,78 @@ class AccessoryViewController: BaseCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      collectionView.deselectItem(at: indexPath, animated: true)
-          
-      // 7. Handle touches which toggle the state of the lightbulb
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let accessory = accessories[indexPath.row]
+        
+        guard let characteristic = accessory.find(serviceType: HMServiceTypeLightbulb, characteristicType: HMCharacteristicMetadataFormatBool) else {
+          return
+        }
+        
+        let toggleState = (characteristic.value as! Bool) ? false : true
+        characteristic.writeValue(NSNumber(value: toggleState)) { error in
+          if error != nil {
+            print("Something went wrong when attempting to update the service characteristic.")
+          }
+          collectionView.reloadData()
+        }
     }
     
     private func loadAccessories() {
-      // 5. Load accessories
-      
-      collectionView?.reloadData()
+        guard let homeAccessories = home?.accessories else {
+          return
+        }
+        
+        for accessory in homeAccessories {
+          if let characteristic = accessory.find(serviceType: HMServiceTypeLightbulb, characteristicType: HMCharacteristicMetadataFormatBool) {
+            accessories.append(accessory)
+            accessory.delegate = self
+            characteristic.enableNotification(true) { error in
+              if error != nil {
+                print("Something went wrong when enabling notification for a chracteristic.")
+              }
+            }
+          }
+        }
+        
+        collectionView?.reloadData()
     }
     
     @objc func discoverAccessories(sender: UIBarButtonItem) {
-      activityIndicator.startAnimating()
-      navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
-      
-      // 2. Start discovery
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        
+        discoveredAccessories.removeAll()
+        browser.delegate = self
+        browser.startSearchingForNewAccessories()
+        perform(#selector(stopDiscoveringAccessories), with: nil, afterDelay: 10)
     }
     
     @objc private func stopDiscoveringAccessories() {
       navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(discoverAccessories(sender:)))
-      // 4. Stop discovering
+      if discoveredAccessories.isEmpty {
+        let alert = UIAlertController(title: "No Accessories Found",
+                                      message: "No Accessories were found. Make sure your accessory is nearby and on the same network.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+      } else {
+        let homeName = home?.name
+        let message = """
+                      Found a total of \(discoveredAccessories.count) accessories. \
+                      Add them to your home \(homeName ?? "")?
+                      """
+        
+        let alert = UIAlertController(
+          title: "Accessories Found",
+          message: message,
+          preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+          self.addAccessories(self.discoveredAccessories)
+        })
+        present(alert, animated: true)
+      }
     }
     
     private func addAccessories(_ accessories: [HMAccessory]) {
@@ -76,11 +130,24 @@ class AccessoryViewController: BaseCollectionViewController {
     }
 }
 
-extension HMAccessory {
-    func find(serviceType: String, characteristicType: String) -> HMCharacteristic? {
-      return services.lazy
-        .filter { $0.serviceType == serviceType }
-        .flatMap { $0.characteristics }
-        .first { $0.metadata?.format == characteristicType }
-    }
+extension AccessoryViewController: HMAccessoryDelegate {
+  func accessory(_ accessory: HMAccessory, service: HMService, didUpdateValueFor characteristic: HMCharacteristic) {
+    collectionView?.reloadData()
+  }
 }
+
+extension AccessoryViewController: HMAccessoryBrowserDelegate {
+  func accessoryBrowser(_ browser: HMAccessoryBrowser, didFindNewAccessory accessory: HMAccessory) {
+    discoveredAccessories.append(accessory)
+  }
+}
+
+extension HMAccessory {
+  func find(serviceType: String, characteristicType: String) -> HMCharacteristic? {
+    return services.lazy
+      .filter { $0.serviceType == serviceType }
+      .flatMap { $0.characteristics }
+      .first { $0.metadata?.format == characteristicType }
+  }
+}
+
